@@ -1,0 +1,14 @@
+<h2>Login</h2>
+<input id="loginName" placeholder="Enter your name">
+<button onclick="login()">Login</button>
+<script>
+function login() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if(user && document.getElementById('loginName').value === user.name){
+    localStorage.setItem('isLoggedIn', 'true');
+    window.location.href = "profile.html";
+  } else {
+    alert("User not found. Please sign up.");
+  }
+}
+</script>

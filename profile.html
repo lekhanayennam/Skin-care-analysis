@@ -1,0 +1,23 @@
+<h2>Your Profile</h2>
+<div id="profileInfo"></div>
+<button onclick="logout()">Logout</button>
+<script>
+function displayProfile() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if(isLoggedIn !== 'true'){
+    window.location.href = "login.html";
+    return;
+  }
+  const user = JSON.parse(localStorage.getItem('user'));
+  document.getElementById('profileInfo').innerHTML = `
+    <p>Name: ${user.name}</p>
+    <p>Email: ${user.email}</p>
+    <p>Age: ${user.age}</p>
+  `;
+}
+function logout() {
+  localStorage.setItem('isLoggedIn', 'false');
+  window.location.href = "login.html";
+}
+displayProfile();
+</script>
